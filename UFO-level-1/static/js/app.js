@@ -14,12 +14,11 @@ tableData.forEach((sighting) => {
     })
 });
 
-var form = d3.select('.form-group');
 var button = d3.select('#filter-btn')
-
+var form = d3.select('#form');
 
 button.on('click', runEnter);
-form.on('change', runEnter);
+form.on('submit', runEnter);
 
 function runEnter() {
     d3.event.preventDefault();
@@ -27,6 +26,8 @@ function runEnter() {
     var inputValue = inputElement.property('value');
 
     console.log(inputValue);
-    // console.log(date);
 
+    var filteredData = data.filter(date => date.datetime === inputValue);
+
+    console.log(filteredData);
 };
