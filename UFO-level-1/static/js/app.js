@@ -25,9 +25,17 @@ function runEnter() {
     var inputElement = d3.select('#datetime')
     var inputValue = inputElement.property('value');
 
-    console.log(inputValue);
-
     var filteredData = data.filter(date => date.datetime === inputValue);
 
-    console.log(filteredData);
+    var table = d3.select('tbody')
+    table.html('')
+
+    filteredData.forEach((sighting) => {
+        var row = tbody.append('tr');
+
+        Object.entries(sighting).forEach(([key, value]) => {
+            var cell = row.append('td');
+            cell.text(value);
+        })
+    });
 };
